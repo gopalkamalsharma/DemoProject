@@ -13,5 +13,20 @@ pipeline {
                 echo 'Tests passed successfully'
             }
         }
+        stage('Create HTML Report') {
+            steps {
+                sh '''
+                  mkdir -p report
+                  echo "<html>
+                          <head><title>Build Report</title></head>
+                          <body>
+                              <h1>Jenkins HTML Publisher Demo</h1>
+                              <p>Build Number: ${BUILD_NUMBER}</p>
+                              <p>Status: SUCCESS</p>
+                          </body>
+                        </html>" > report/index.html
+                '''
+            }
+        }
     }
 }
