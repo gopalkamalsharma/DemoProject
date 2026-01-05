@@ -29,4 +29,16 @@ pipeline {
             }
         }
     }
+    post {
+        success {
+            publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: 'report',
+                reportFiles: 'index.html',
+                reportName: 'HTML Build Report'
+            ])
+        }
+    }
 }
